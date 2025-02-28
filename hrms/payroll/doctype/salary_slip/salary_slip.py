@@ -283,9 +283,10 @@ class SalarySlip(TransactionBase):
 	def get_emp_and_working_day_details(self):
 		"""First time, load all the components from salary structure"""
 		if self.employee:
-			self.set("loans", [])
 			self.set("earnings", [])
 			self.set("deductions", [])
+			if hasattr(self, "loans"):
+				self.set("loans", [])
 
 			if not self.salary_slip_based_on_timesheet:
 				self.get_date_details()
