@@ -285,6 +285,8 @@ class SalarySlip(TransactionBase):
 		if self.employee:
 			self.set("earnings", [])
 			self.set("deductions", [])
+			if hasattr(self, "loans"):
+				self.set("loans", [])
 
 			if not self.salary_slip_based_on_timesheet:
 				self.get_date_details()
